@@ -17,7 +17,7 @@ class Span
         };
         int longestSpan();
         int shortestSpan();
-        // void multiAdding(...);
+        void multiAdding(std::set<int> arg_list);
         void diplaySpan();
     private:
         Span();

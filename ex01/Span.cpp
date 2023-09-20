@@ -11,17 +11,24 @@ Span::Span(unsigned int N):N(N)
 }
 
 
-// Span::Span(const Span& original)
-// {
-//     *this = original;
-// }
+Span::Span(const Span& original)
+{
+    *this = original;
+}
 
-// Span& Span::operator=(const Span& original)
-// {
-//     // if(this = &original)
-//     //     return(*this);
-    
-// }
+Span& Span::operator=(const Span& original)
+{
+    if(this = &original)
+        return(*this);
+    it = original.arr.begin();
+    while(it != original.arr.end())
+    {
+        arr.addNumber(*it);
+        it++;
+    }
+    return (*this)
+
+}
 
 
 const char* Span::exceptionDuplicate::what() const throw()
@@ -98,7 +105,13 @@ int  Span::shortestSpan()
 }
 
 
-// void Span::multiAdding(...)
-// {
-//     while()
-// }
+void Span::multiAdding(std::set<int> arg_list)
+{
+    std::set<int>::iterator it2 = arg_list.begin();
+    while(it2 != arg_list.end() && arr.size() < N)
+    {
+      // std::cout << "here" << std::endl;
+      arr.insert(*it2);
+      it2++;
+    }
+}
