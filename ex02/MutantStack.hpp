@@ -3,39 +3,64 @@
 
 #include <iostream>
 #include <stack>
+#include <deque>
 
 
-template <typename E>
-class MutantStack{
-    private:
-     std::stack<E> m_stack; 
+template <class Type, class container= std::deque <Type> >
+class MutantStack : public std::stack<Type, container> {
     public:
-    MutantStack(){
+    typedef typename std::stack<Type,container>::container_type::iterator iterator;
+    typedef typename std::stack<Type,container>::container_type::const_iterator constIterator;
+    typedef typename std::stack<Type,container>::container_type::reverse_iterator revIterator;
+    typedef typename std::stack<Type,container>::container_type::const_reverse_iterator constRevIterator;
+    MutantStack(){}
+    MutantStack(const MutantStack<Type, container>& original){
+      this  = original;
+    }
+    MutantStack& operator=(const MutantStack<Type, container>& original){
+      if(this != &original)
+      {
+         this->c = original.c;
+      }
+      return (*this);
+    }
+    virtual ~MutantStack(){}
 
-    }
-    MutantStack(const MutantStack& original)
-    {
-    }
-    MutantStack& operator=(const MutantStack& original)
-    {
+    iterator begin(){
+      return (this->c.begin());
+    } 
 
-    }
-    ~MutantStack()
+    iterator end()
     {
+      return (this->c.end());
+    }
+    
+    constIterator cbegin(){
+      return (this->c.cbegin());
+    }
+    constIterator cend()
+    {
+      return (this->c.cend());
+    }
 
-    }
-    bool empty() const
+    revIterator rbegin()
     {
-       return m_stack.empty();
+      return (this->c.rbegin());
     }
-    size_t size() const
-    {
-        return m_stack.size();
-    }
-    T& top()
-    {
-       return  m_stack.top();
-    }
-};
 
-#endif 
+    revIterator rend()
+    {
+      return (this->c.rend());
+    }
+    constRevIterator crbegin()
+    {
+      return (this->c.crbegin());
+    }
+
+    constRevIterator crend()
+    {
+      return (this->c.crend());
+    }
+};  
+
+#endif
