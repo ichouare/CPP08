@@ -2,29 +2,26 @@
 
 int main()
 {
-    try{
+   
+Span sp = Span(5);
+sp.addNumber(6);
+sp.addNumber(3);
+sp.addNumber(17);
+sp.addNumber(9);
+sp.addNumber(11);
+std::cout << sp.shortestSpan() << std::endl;
+std::cout << sp.longestSpan() << std::endl;
 
-                Span sp = Span(150);
-            std::set<int> set3;
-            for(int i = 0; i < 500 ; i++)
-            {
-                set3.insert(i);
-            }
-            // std::set<int> arr = {0,1,2,3,4,5,6};
-            // sp.addNumber(6);
-            // sp.addNumber(3);
-            // sp.addNumber(17);
-            // sp.addNumber(9);
-            // sp.addNumber(11);
-            sp.multiAdding(set3);
-            std::cout << sp.shortestSpan() << std::endl;
-            std::cout << sp.longestSpan() << std::endl;
-    }
-    catch(std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-// std::cout << sp.shortestSpan() << std::endl;
-// std::cout << sp.longestSpan() << std::endl;
+Span sp1 = Span(150);
+std::vector<int> set3;
+for(int i = 0; i < 500 ; i++)
+{
+    set3.push_back(i);
+    //set.insert(i) // set 
+}
+
+sp1.multiAdding(set3);
+std::cout << sp1.shortestSpan() << std::endl;
+std::cout << sp1.longestSpan() << std::endl;
 return 0;
 }

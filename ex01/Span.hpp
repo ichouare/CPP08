@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <set>
+#include <vector>
+#include <cmath>
 class Span 
 {
     public :
@@ -17,7 +19,17 @@ class Span
         };
         int longestSpan();
         int shortestSpan();
-        void multiAdding(std::set<int> arg_list);
+        template <typename T>
+        void multiAdding(T arg_list)
+        {
+        typedef  typename T::iterator iterator;
+    iterator it2 = arg_list.begin();
+        while(it2 != arg_list.end() && arr.size() < N)
+        {
+        arr.insert(*it2);
+        it2++;
+        }
+    }
         void diplaySpan();
     private:
         Span();

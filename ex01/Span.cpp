@@ -18,15 +18,15 @@ Span::Span(const Span& original)
 
 Span& Span::operator=(const Span& original)
 {
-    if(this = &original)
+    if(this == &original)
         return(*this);
     it = original.arr.begin();
     while(it != original.arr.end())
     {
-        arr.addNumber(*it);
+        addNumber(*it);
         it++;
     }
-    return (*this)
+    return (*this);
 
 }
 
@@ -45,7 +45,6 @@ void Span::addNumber(int number)
         if(arr.size() == 0)
         {
             arr.insert(number);
-            std::cout << "here" << std::endl;
         }
         else
         {
@@ -53,7 +52,6 @@ void Span::addNumber(int number)
             if(it != arr.end())
             {
                 throw Span::exceptionDuplicate();
-                std::cout <<": " << "hrer" << std::endl;
             }
             else
                 arr.insert(number);
@@ -104,14 +102,14 @@ int  Span::shortestSpan()
     return(shortest_span);
 }
 
-
-void Span::multiAdding(std::set<int> arg_list)
-{
-    std::set<int>::iterator it2 = arg_list.begin();
-    while(it2 != arg_list.end() && arr.size() < N)
-    {
-      // std::cout << "here" << std::endl;
-      arr.insert(*it2);
-      it2++;
-    }
-}
+// template <typename T>
+// void Span::multiAdding(T arg_list)
+// {
+//      typedef  typename T::iterator iterator;
+//    iterator it2 = arg_list.begin();
+//     while(it2 != arg_list.end() && arr.size() < N)
+//     {
+//       arr.insert(*it2);
+//       it2++;
+//     }
+// }
