@@ -2,7 +2,8 @@
 int main()
 {
 MutantStack<int> mstack;
-// std::stack<int>  mstack;
+// MutantStack<int>  mstack2;
+
 
 mstack.push(5);
 mstack.push(17);
@@ -26,6 +27,13 @@ while (it != ite)
 {
 std::cout << *it << std::endl;
 ++it;
+}
+MutantStack<int>  mstack2(mstack);
+// mstack2 = mstack;
+
+for(it = mstack2.begin(); it  != mstack2.end(); it++)
+{
+    std::cout << *it << std::endl;
 }
 std::stack<int> s(mstack);
 return 0;

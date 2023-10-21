@@ -11,6 +11,7 @@ class Span
         Span(unsigned int n);
         Span(const Span& original);
         Span& operator=(const Span& original);
+        ~Span();
         void addNumber(int number);
         class exceptionDuplicate : public std::exception
         {
@@ -22,15 +23,19 @@ class Span
         template <typename T>
         void multiAdding(T arg_list)
         {
-        typedef  typename T::iterator iterator;
-    iterator it2 = arg_list.begin();
-        while(it2 != arg_list.end() && arr.size() < N)
-        {
-        arr.insert(*it2);
-        it2++;
+            typedef  typename T::iterator iterator;
+            iterator it2 = arg_list.begin();
+            unsigned int i = 0;
+            while(it2 != arg_list.end())
+            {
+                if(i == N )
+                    throw exceptionDuplicate();
+                arr.insert(*it2);
+                it2++;
+                i++;
+            }
         }
-    }
-        void diplaySpan();
+    void diplaySpan();
     private:
         Span();
         std::set<int> arr;

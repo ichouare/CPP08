@@ -1,5 +1,7 @@
+#ifndef EASYFIND_H
+#define EASYFIND_H
 
-#include <vector>
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -20,12 +22,13 @@ const char* myException::what() const throw()
 template <typename T>
 void  Easyfind(T lst, int a)
 {
-    std::vector<int>::iterator result;
-    result = std::find(lst.begin(), lst.end(), a ); 
+    typename T::iterator result;
+    result = std::find(lst.begin(), lst.end(), a); 
     if(result == lst.end())
        throw myException();
-    std::cout << *result << std::endl;
-    
+    std::cout << *result << std::endl; 
 };
 
+
+#endif
 

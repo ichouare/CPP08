@@ -15,9 +15,11 @@ class MutantStack : public std::stack<Type, container> {
     typedef typename std::stack<Type,container>::container_type::const_reverse_iterator constRevIterator;
     MutantStack(){}
     MutantStack(const MutantStack<Type, container>& original){
-      this  = original;
+      std::cout << "paramitized constructor  MutanStack used" << std::endl;
+      *this  = original;
     }
     MutantStack& operator=(const MutantStack<Type, container>& original){
+      std::cout << "assign operator MutanStack used" << std::endl;
       if(this != &original)
       {
          this->c = original.c;
